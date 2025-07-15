@@ -7,6 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Volume2, Check, X, RotateCcw, Trophy, Brain } from "lucide-react";
 import StatsCard from "@/components/mahjong/StatsCard";
 import AccuracyProgress from "@/components/mahjong/AccuracyProgress";
+import ModeSelect from "@/components/mahjong/ModeSelect";
 
 // Mahjong tile data with Cantonese names
 interface MahjongTile {
@@ -413,29 +414,7 @@ export default function MahjongLearningApp() {
         {/* Sound Toggle */}
 
         {/* Mode Selection */}
-        <div className="flex gap-2 mb-6">
-          <Button
-            variant={currentMode === "recognize" ? "default" : "outline"}
-            onClick={() => setCurrentMode("recognize")}
-            className="flex-1"
-          >
-            🀄 → 文字
-          </Button>
-          <Button
-            variant={currentMode === "select" ? "default" : "outline"}
-            onClick={() => setCurrentMode("select")}
-            className="flex-1"
-          >
-            文字 → 🀄
-          </Button>
-          <Button
-            variant={currentMode === "type" ? "default" : "outline"}
-            onClick={() => setCurrentMode("type")}
-            className="flex-1"
-          >
-            Type
-          </Button>
-        </div>
+        <ModeSelect currentMode={currentMode} setCurrentMode={setCurrentMode} />
 
         {/* Show English Names Toggle */}
         <div className="mb-6">
