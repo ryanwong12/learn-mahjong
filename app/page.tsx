@@ -27,7 +27,7 @@ export default function MahjongLearningApp() {
     streak: 0,
     totalAnswered: 0,
   });
-  const [currentMode, setCurrentMode] = useState<GameMode>("recognize");
+  const [currentMode, setCurrentMode] = useState<GameMode>(GameMode.Recognize);
   const [studiedTiles, setStudiedTiles] = useState<Set<string>>(new Set());
   const [showEnglishNames, setShowEnglishNames] = useState<boolean>(true);
 
@@ -38,13 +38,13 @@ export default function MahjongLearningApp() {
 
     let question: Question;
 
-    if (currentMode === "recognize") {
+    if (currentMode === GameMode.Recognize) {
       // Show tile, user types Cantonese name
       question = {
         tile: randomTile,
-        mode: "recognize",
+        mode: GameMode.Recognize,
       };
-    } else if (currentMode === "select") {
+    } else if (currentMode === GameMode.Select) {
       // Show Cantonese name, user selects correct tile
       const incorrectOptions = MahjongTiles.filter(
         (t) => t.id !== randomTile.id
@@ -57,13 +57,13 @@ export default function MahjongLearningApp() {
         options: [randomTile, ...incorrectOptions].sort(
           () => Math.random() - 0.5
         ),
-        mode: "select",
+        mode: GameMode.Select,
       };
     } else {
       // Type mode - show tile, user types name
       question = {
         tile: randomTile,
-        mode: "type",
+        mode: GameMode.Type,
       };
     }
 

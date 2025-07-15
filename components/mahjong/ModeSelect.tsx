@@ -1,10 +1,9 @@
+import GameMode from "@/types/GameMode";
 import { Button } from "../ui/button";
 
-type Mode = "recognize" | "select" | "type";
-
 interface ModeSelectProps {
-  currentMode: Mode;
-  setCurrentMode: (mode: Mode) => void;
+  currentMode: GameMode;
+  setCurrentMode: (mode: GameMode) => void;
 }
 
 const ModeSelect: React.FC<ModeSelectProps> = ({
@@ -14,22 +13,22 @@ const ModeSelect: React.FC<ModeSelectProps> = ({
   return (
     <div className="flex gap-2 mb-6">
       <Button
-        variant={currentMode === "recognize" ? "default" : "outline"}
-        onClick={() => setCurrentMode("recognize")}
+        variant={currentMode === GameMode.Recognize ? "default" : "outline"}
+        onClick={() => setCurrentMode(GameMode.Recognize)}
         className="flex-1"
       >
         🀄 → 文字
       </Button>
       <Button
-        variant={currentMode === "select" ? "default" : "outline"}
-        onClick={() => setCurrentMode("select")}
+        variant={currentMode === GameMode.Select ? "default" : "outline"}
+        onClick={() => setCurrentMode(GameMode.Select)}
         className="flex-1"
       >
         文字 → 🀄
       </Button>
       <Button
-        variant={currentMode === "type" ? "default" : "outline"}
-        onClick={() => setCurrentMode("type")}
+        variant={currentMode === GameMode.Type ? "default" : "outline"}
+        onClick={() => setCurrentMode(GameMode.Type)}
         className="flex-1"
       >
         Type
