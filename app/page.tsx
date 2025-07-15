@@ -8,16 +8,9 @@ import { Volume2, Check, X, RotateCcw, Trophy, Brain } from "lucide-react";
 import StatsCard from "@/components/mahjong/StatsCard";
 import AccuracyProgress from "@/components/mahjong/AccuracyProgress";
 import ModeSelect from "@/components/mahjong/ModeSelect";
+import MahjongTile from "@/types/MahjongTile";
 
 // Mahjong tile data with Cantonese names
-interface MahjongTile {
-  id: string;
-  nameCantonese: string;
-  nameEnglish: string;
-  category: "dots" | "bamboo" | "characters" | "honors" | "flowers";
-  unicode: string;
-  pinyin?: string;
-}
 
 const mahjongTiles: MahjongTile[] = [
   // Dots (筒子)
