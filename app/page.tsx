@@ -73,8 +73,8 @@ export default function MahjongLearningApp() {
     setStudiedTiles((prev) => new Set([...prev, randomTile.id]));
   };
 
-  // Check answer
-  const checkAnswer = (answer: string) => {
+  // Check answer in cantonese
+  const checkAnswerCanto = (answer: string) => {
     if (!currentQuestion) return;
 
     const correct = answer === currentQuestion.tile.nameCantonese;
@@ -89,15 +89,36 @@ export default function MahjongLearningApp() {
     }));
   };
 
+  // Check answer in english
+  const checkAnswerRoman = (answer: string) => {
+    if (!currentQuestion) return;
+
+    const correct = answer === currentQuestion.tile.pinyin;
+    setIsCorrect(correct);
+    setShowResult(true);
+
+    setProgress((prev) => ({
+      correct: prev.correct + (correct ? 1 : 0),
+      incorrect: prev.incorrect + (correct ? 0 : 1),
+      streak: correct ? prev.streak + 1 : 0,
+      totalAnswered: prev.totalAnswered + 1,
+    }));
+  };
+
   // Handle option selection
   const handleOptionSelect = (selectedTile: MahjongTile) => {
     setUserAnswer(selectedTile.nameCantonese);
-    checkAnswer(selectedTile.nameCantonese);
+    checkAnswerCanto(selectedTile.nameCantonese);
   };
 
-  // Handle text input
-  const handleTextSubmit = () => {
-    checkAnswer(userAnswer);
+  // Handle canto text input
+  const handleCantoTextSubmit = () => {
+    checkAnswerCanto(userAnswer);
+  };
+
+  // Handle english text input
+  const handleRomanTextSubmit = () => {
+    checkAnswerRoman(userAnswer);
   };
 
   // Next question
@@ -210,7 +231,8 @@ export default function MahjongLearningApp() {
                     currentQuestion={currentQuestion}
                     userAnswer={userAnswer}
                     setUserAnswer={setUserAnswer}
-                    handleTextSubmit={handleTextSubmit}
+                    handleCantoTextSubmit={handleCantoTextSubmit}
+                    handleRomanTextSubmit={handleRomanTextSubmit}
                     handleOptionSelect={handleOptionSelect}
                   />
                 )}
