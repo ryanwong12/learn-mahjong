@@ -31,7 +31,7 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               key={option.id}
               variant="outline"
               onClick={() => handleOptionSelect(option)}
-              className="h-20 text-4xl flex flex-col items-center justify-center"
+              className="h-20 text-2xl flex flex-col items-center justify-center"
             >
               {option.pinyin}
             </Button>
