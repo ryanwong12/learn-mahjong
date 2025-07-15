@@ -243,7 +243,6 @@ export default function MahjongLearningApp() {
                     currentQuestion={currentQuestion}
                     userAnswer={userAnswer}
                     setUserAnswer={setUserAnswer}
-                    handleCantoTextSubmit={handleCantoTextSubmit}
                     handleRomanTextSubmit={handleRomanTextSubmit}
                     handleOptionSelect={handleOptionSelect}
                   />

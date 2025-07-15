@@ -2,8 +2,8 @@ import Question from "@/types/Question";
 import { Button } from "../ui/button";
 import MahjongTile from "@/types/MahjongTile";
 import GameMode from "@/types/GameMode";
+import TileCategory from "@/types/TileCategory";
 import RomanAnswerInput from "./RomanAnswerInput";
-import CantoAnswerInput from "./CantoAnswerInput";
 
 type AnswerInputProps = {
   currentMode: GameMode;
@@ -11,7 +11,6 @@ type AnswerInputProps = {
   userAnswer: string;
   setUserAnswer: (value: string) => void;
   handleRomanTextSubmit: () => void;
-  handleCantoTextSubmit: () => void;
   handleOptionSelect: (selectedTile: MahjongTile) => void;
 };
 
@@ -21,11 +20,12 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
   userAnswer,
   setUserAnswer,
   handleRomanTextSubmit,
-  handleCantoTextSubmit,
   handleOptionSelect,
 }) => {
   switch (currentMode) {
     case GameMode.SelectPinyin:
+      console.log(currentQuestion.tile);
+      console.log(currentQuestion.tile.category !== TileCategory.Character);
       return (
         <div className="grid grid-cols-2 gap-4">
           {currentQuestion.options?.map((option) => (
@@ -33,9 +33,12 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               key={option.id}
               variant="outline"
               onClick={() => handleOptionSelect(option)}
-              className="h-20 text-4xl"
+              className="h-20 text-4xl flex flex-col items-center justify-center"
             >
-              {option.pinyin}
+              {currentQuestion.tile.category !== TileCategory.Character && (
+                <span className="text-3xl mb-1">{option.nameCantonese}</span>
+              )}
+              <span className="text-base">{option.pinyin}</span>
             </Button>
           ))}
         </div>

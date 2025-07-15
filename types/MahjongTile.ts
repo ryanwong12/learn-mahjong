@@ -1,8 +1,10 @@
+import TileCategory from "./TileCategory";
+
 interface MahjongTile {
   id: string;
   nameCantonese: string;
   nameEnglish: string;
-  category: "dots" | "bamboo" | "characters" | "honors" | "flowers";
+  category: TileCategory;
   unicode: string;
   pinyin?: string;
 }
