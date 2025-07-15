@@ -24,8 +24,6 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
 }) => {
   switch (currentMode) {
     case GameMode.SelectPinyin:
-      console.log(currentQuestion.tile);
-      console.log(currentQuestion.tile.category !== TileCategory.Character);
       return (
         <div className="grid grid-cols-2 gap-4">
           {currentQuestion.options?.map((option) => (
