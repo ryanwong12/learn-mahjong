@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
-import { Volume2, Check, X, RotateCcw, Trophy, Brain } from "lucide-react";
+import { RotateCcw } from "lucide-react";
 import StatsCard from "@/components/mahjong/StatsCard";
 import AccuracyProgress from "@/components/mahjong/AccuracyProgress";
 import ModeSelect from "@/components/mahjong/ModeSelect";

@@ -7,7 +7,7 @@ type StatsCardProps = {
     incorrect: number;
     streak: number;
   };
-  studiedTiles: Set<any>;
+  studiedTiles: Set<string>;
 };
 
 const StatsCard = ({ progress, studiedTiles }: StatsCardProps) => {

@@ -2,7 +2,6 @@ import Question from "@/types/Question";
 import { Button } from "../ui/button";
 import MahjongTile from "@/types/MahjongTile";
 import GameMode from "@/types/GameMode";
-import TileCategory from "@/types/TileCategory";
 import RomanAnswerInput from "./RomanAnswerInput";
 
 type AnswerInputProps = {
