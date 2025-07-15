@@ -10,7 +10,7 @@ type StatsCardProps = {
   studiedTiles: Set<any>;
 };
 
-export default function StatsCard({ progress, studiedTiles }: StatsCardProps) {
+const StatsCard = ({ progress, studiedTiles }: StatsCardProps) => {
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
       <Card className="text-center">
@@ -61,4 +61,5 @@ export default function StatsCard({ progress, studiedTiles }: StatsCardProps) {
       </Card>
     </div>
   );
-}
+};
+export default StatsCard;
