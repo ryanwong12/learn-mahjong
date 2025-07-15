@@ -10,21 +10,11 @@ import AccuracyProgress from "@/components/mahjong/AccuracyProgress";
 import ModeSelect from "@/components/mahjong/ModeSelect";
 import MahjongTiles from "@/constants/MahjongTiles";
 import MahjongTile from "@/types/MahjongTile";
-
-type GameMode = "recognize" | "select" | "type";
-
-interface Question {
-  tile: MahjongTile;
-  options?: MahjongTile[];
-  mode: GameMode;
-}
-
-interface UserProgress {
-  correct: number;
-  incorrect: number;
-  streak: number;
-  totalAnswered: number;
-}
+import GameMode from "@/types/GameMode";
+import Question from "@/types/Question";
+import UserProgress from "@/types/UserProgress";
+import AnswerInput from "@/components/mahjong/AnswerInput";
+import Result from "@/components/mahjong/Result";
 
 export default function MahjongLearningApp() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -215,69 +205,23 @@ export default function MahjongLearningApp() {
 
                 {/* Answer Input */}
                 {!showResult && (
-                  <div>
-                    {currentMode === "select" && currentQuestion.options ? (
-                      <div className="grid grid-cols-2 gap-4">
-                        {currentQuestion.options.map((option) => (
-                          <Button
-                            key={option.id}
-                            variant="outline"
-                            onClick={() => handleOptionSelect(option)}
-                            className="h-20 text-4xl"
-                          >
-                            {option.unicode}
-                          </Button>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="space-y-4">
-                        <input
-                          type="text"
-                          value={userAnswer}
-                          onChange={(e) => setUserAnswer(e.target.value)}
-                          onKeyPress={(e) =>
-                            e.key === "Enter" && handleTextSubmit()
-                          }
-                          placeholder="Enter Cantonese name..."
-                          className="w-full p-3 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        <Button
-                          onClick={handleTextSubmit}
-                          className="w-full"
-                          disabled={!userAnswer.trim()}
-                        >
-                          Submit
-                        </Button>
-                      </div>
-                    )}
-                  </div>
+                  <AnswerInput
+                    currentMode={currentMode}
+                    currentQuestion={currentQuestion}
+                    userAnswer={userAnswer}
+                    setUserAnswer={setUserAnswer}
+                    handleTextSubmit={handleTextSubmit}
+                    handleOptionSelect={handleOptionSelect}
+                  />
                 )}
 
                 {/* Result */}
                 {showResult && (
-                  <div className="space-y-4">
-                    <div
-                      className={`text-2xl font-bold ${
-                        isCorrect ? "text-green-600" : "text-red-600"
-                      }`}
-                    >
-                      {isCorrect ? "✓ Correct!" : "✗ Incorrect"}
-                    </div>
-                    <div className="text-lg">
-                      <div className="font-semibold text-gray-800">
-                        {currentQuestion.tile.nameCantonese}
-                      </div>
-                      <div className="text-gray-600">
-                        {currentQuestion.tile.nameEnglish}
-                      </div>
-                      <div className="text-sm text-gray-500">
-                        {currentQuestion.tile.pinyin}
-                      </div>
-                    </div>
-                    <Button onClick={nextQuestion} className="w-full">
-                      Next Question
-                    </Button>
-                  </div>
+                  <Result
+                    isCorrect={isCorrect}
+                    currentQuestion={currentQuestion}
+                    nextQuestion={nextQuestion}
+                  />
                 )}
               </div>
             )}
