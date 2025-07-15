@@ -33,10 +33,7 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               onClick={() => handleOptionSelect(option)}
               className="h-20 text-4xl flex flex-col items-center justify-center"
             >
-              {currentQuestion.tile.category !== TileCategory.Character && (
-                <span className="text-3xl mb-1">{option.nameCantonese}</span>
-              )}
-              <span className="text-base">{option.pinyin}</span>
+              {option.pinyin}
             </Button>
           ))}
         </div>
