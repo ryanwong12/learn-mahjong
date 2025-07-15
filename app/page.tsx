@@ -31,7 +31,7 @@ export default function MahjongLearningApp() {
     GameMode.SelectPinyin
   );
   const [studiedTiles, setStudiedTiles] = useState<Set<string>>(new Set());
-  const [showEnglishNames, setShowEnglishNames] = useState<boolean>(true);
+  const [showEnglishNames, setShowEnglishNames] = useState<boolean>(false);
 
   // Generate a new question
   const generateQuestion = () => {
@@ -181,16 +181,6 @@ export default function MahjongLearningApp() {
         {/* Mode Selection */}
         <ModeSelect currentMode={currentMode} setCurrentMode={setCurrentMode} />
 
-        {/* Show English Names Toggle */}
-        <div className="mb-6">
-          <span className="text-sm font-medium">Show English Names</span>
-          <Switch
-            checked={showEnglishNames}
-            onClick={() => setShowEnglishNames(!showEnglishNames)}
-            className="ml-2"
-          />
-        </div>
-
         {/* Question Card */}
         <Card className="mb-6">
           <CardHeader>
@@ -267,6 +257,16 @@ export default function MahjongLearningApp() {
             <RotateCcw className="w-4 h-4" />
             Reset Progress
           </Button>
+        </div>
+
+        {/* Show English Names Toggle */}
+        <div className="text-center mt-4">
+          <span className="text-sm font-medium">Show English Names</span>
+          <Switch
+            checked={showEnglishNames}
+            onClick={() => setShowEnglishNames(!showEnglishNames)}
+            className="ml-2"
+          />
         </div>
       </div>
     </div>

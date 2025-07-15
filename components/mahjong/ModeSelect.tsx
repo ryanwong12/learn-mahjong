@@ -26,13 +26,13 @@ const ModeSelect: React.FC<ModeSelectProps> = ({
       >
         文字 → 🀄
       </Button>
-      <Button
+      {/* <Button
         variant={currentMode === GameMode.Type ? "default" : "outline"}
         onClick={() => setCurrentMode(GameMode.Type)}
         className="flex-1"
       >
         Type
-      </Button>
+      </Button> */}
     </div>
   );
 };
