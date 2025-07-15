@@ -1,4 +1,4 @@
-import { Brain, Trophy, X } from "lucide-react";
+import { Brain, Flame, Trophy, X } from "lucide-react";
 import { Card, CardContent } from "../ui/card";
 
 type StatsCardProps = {
@@ -40,6 +40,7 @@ const StatsCard = ({ progress, studiedTiles }: StatsCardProps) => {
       <Card className="text-center">
         <CardContent className="p-4">
           <div className="flex items-center justify-center mb-2">
+            <Flame className="w-5 h-5 text-orange-500 mr-1" />
             <span className="text-2xl font-bold text-blue-600">
               {progress.streak}
             </span>
