@@ -25,13 +25,20 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
   handleOptionSelect,
 }) => {
   switch (currentMode) {
-    case GameMode.Recognize:
+    case GameMode.SelectPinyin:
       return (
-        <CantoAnswerInput
-          userAnswer={userAnswer}
-          setUserAnswer={setUserAnswer}
-          handleCantoTextSubmit={handleCantoTextSubmit}
-        />
+        <div className="grid grid-cols-2 gap-4">
+          {currentQuestion.options?.map((option) => (
+            <Button
+              key={option.id}
+              variant="outline"
+              onClick={() => handleOptionSelect(option)}
+              className="h-20 text-4xl"
+            >
+              {option.pinyin}
+            </Button>
+          ))}
+        </div>
       );
 
     case GameMode.Type:
@@ -42,7 +49,7 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
           handleTextSubmit={handleRomanTextSubmit}
         />
       );
-    case GameMode.Select:
+    case GameMode.SelectTile:
       return (
         <div className="grid grid-cols-2 gap-4">
           {currentQuestion.options?.map((option) => (

@@ -13,15 +13,15 @@ const ModeSelect: React.FC<ModeSelectProps> = ({
   return (
     <div className="flex gap-2 mb-6">
       <Button
-        variant={currentMode === GameMode.Recognize ? "default" : "outline"}
-        onClick={() => setCurrentMode(GameMode.Recognize)}
+        variant={currentMode === GameMode.SelectPinyin ? "default" : "outline"}
+        onClick={() => setCurrentMode(GameMode.SelectPinyin)}
         className="flex-1"
       >
         🀄 → 文字
       </Button>
       <Button
-        variant={currentMode === GameMode.Select ? "default" : "outline"}
-        onClick={() => setCurrentMode(GameMode.Select)}
+        variant={currentMode === GameMode.SelectTile ? "default" : "outline"}
+        onClick={() => setCurrentMode(GameMode.SelectTile)}
         className="flex-1"
       >
         文字 → 🀄

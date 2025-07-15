@@ -27,7 +27,9 @@ export default function MahjongLearningApp() {
     streak: 0,
     totalAnswered: 0,
   });
-  const [currentMode, setCurrentMode] = useState<GameMode>(GameMode.Recognize);
+  const [currentMode, setCurrentMode] = useState<GameMode>(
+    GameMode.SelectPinyin
+  );
   const [studiedTiles, setStudiedTiles] = useState<Set<string>>(new Set());
   const [showEnglishNames, setShowEnglishNames] = useState<boolean>(true);
 
@@ -38,13 +40,22 @@ export default function MahjongLearningApp() {
 
     let question: Question;
 
-    if (currentMode === GameMode.Recognize) {
-      // Show tile, user types Cantonese name
+    if (currentMode === GameMode.SelectPinyin) {
+      // Show tile, user selects Pinyin
+      const incorrectOptions = MahjongTiles.filter(
+        (t) => t.id !== randomTile.id
+      )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
       question = {
         tile: randomTile,
-        mode: GameMode.Recognize,
+        options: [randomTile, ...incorrectOptions].sort(
+          () => Math.random() - 0.5
+        ),
+        mode: GameMode.SelectPinyin,
       };
-    } else if (currentMode === GameMode.Select) {
+    } else if (currentMode === GameMode.SelectTile) {
       // Show Cantonese name, user selects correct tile
       const incorrectOptions = MahjongTiles.filter(
         (t) => t.id !== randomTile.id
@@ -57,7 +68,7 @@ export default function MahjongLearningApp() {
         options: [randomTile, ...incorrectOptions].sort(
           () => Math.random() - 0.5
         ),
-        mode: GameMode.Select,
+        mode: GameMode.SelectTile,
       };
     } else {
       // Type mode - show tile, user types name
@@ -184,9 +195,9 @@ export default function MahjongLearningApp() {
         <Card className="mb-6">
           <CardHeader>
             <CardTitle className="text-center">
-              {currentMode === "recognize"
+              {currentMode === GameMode.SelectPinyin
                 ? "What is this tile called?"
-                : currentMode === "select"
+                : currentMode === GameMode.SelectTile
                 ? "Select the correct tile:"
                 : "Type the Cantonese name:"}
             </CardTitle>
@@ -194,7 +205,8 @@ export default function MahjongLearningApp() {
           <CardContent>
             {currentQuestion && (
               <div className="text-center">
-                {currentMode === "recognize" || currentMode === "type" ? (
+                {currentMode === GameMode.SelectPinyin ||
+                currentMode === GameMode.Type ? (
                   <div className="mb-6">
                     <div className="text-8xl mb-4">
                       {currentQuestion.tile.unicode}
@@ -204,9 +216,9 @@ export default function MahjongLearningApp() {
                         {currentQuestion.tile.nameEnglish}
                       </div>
                     )}
-                    <div className="text-sm text-gray-500">
+                    {/* <div className="text-sm text-gray-500">
                       {currentQuestion.tile.pinyin}
-                    </div>
+                    </div> */}
                   </div>
                 ) : (
                   <div className="mb-6">
