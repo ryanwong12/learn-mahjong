@@ -6,6 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
 import { Volume2, Check, X, RotateCcw, Trophy, Brain } from "lucide-react";
 import StatsCard from "@/components/mahjong/StatsCard";
+import AccuracyProgress from "@/components/mahjong/AccuracyProgress";
 
 // Mahjong tile data with Cantonese names
 interface MahjongTile {
@@ -407,17 +408,9 @@ export default function MahjongLearningApp() {
         <StatsCard progress={progress} studiedTiles={studiedTiles} />
 
         {/* Accuracy Progress */}
-        <Card className="mb-6">
-          <CardContent className="p-4">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium">Accuracy</span>
-              <span className="text-sm font-medium">
-                {accuracy.toFixed(1)}%
-              </span>
-            </div>
-            <Progress value={accuracy} className="h-2" />
-          </CardContent>
-        </Card>
+        <AccuracyProgress accuracy={accuracy} />
+
+        {/* Sound Toggle */}
 
         {/* Mode Selection */}
         <div className="flex gap-2 mb-6">
