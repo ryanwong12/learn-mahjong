@@ -213,7 +213,7 @@ export default function MahjongLearningApp() {
                 ) : (
                   <div className="mb-6">
                     <div className="text-4xl font-bold mb-4 text-gray-800">
-                      {currentQuestion.tile.nameCantonese}
+                      {currentQuestion.tile.pinyin}
                     </div>
                     {showEnglishNames && (
                       <div className="text-lg text-gray-600 mb-2">
@@ -221,7 +221,7 @@ export default function MahjongLearningApp() {
                       </div>
                     )}
                     <div className="text-sm text-gray-500">
-                      {currentQuestion.tile.pinyin}
+                      {currentQuestion.tile.nameCantonese}
                     </div>
                   </div>
                 )}
