@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Switch } from "@/components/ui/switch";
 import { Volume2, Check, X, RotateCcw, Trophy, Brain } from "lucide-react";
 
 // Mahjong tile data with Cantonese names
@@ -293,6 +294,7 @@ export default function MahjongLearningApp() {
   });
   const [currentMode, setCurrentMode] = useState<GameMode>("recognize");
   const [studiedTiles, setStudiedTiles] = useState<Set<string>>(new Set());
+  const [showEnglishNames, setShowEnglishNames] = useState<boolean>(true);
 
   // Generate a new question
   const generateQuestion = () => {
@@ -488,6 +490,16 @@ export default function MahjongLearningApp() {
           </Button>
         </div>
 
+        {/* Show English Names Toggle */}
+        <div className="mb-6">
+          <span className="text-sm font-medium">Show English Names</span>
+          <Switch
+            checked={showEnglishNames}
+            onClick={() => setShowEnglishNames(!showEnglishNames)}
+            className="ml-2"
+          />
+        </div>
+
         {/* Question Card */}
         <Card className="mb-6">
           <CardHeader>
@@ -507,9 +519,11 @@ export default function MahjongLearningApp() {
                     <div className="text-8xl mb-4">
                       {currentQuestion.tile.unicode}
                     </div>
-                    <div className="text-lg text-gray-600 mb-2">
-                      {currentQuestion.tile.nameEnglish}
-                    </div>
+                    {showEnglishNames && (
+                      <div className="text-lg text-gray-600 mb-2">
+                        {currentQuestion.tile.nameEnglish}
+                      </div>
+                    )}
                     <div className="text-sm text-gray-500">
                       {currentQuestion.tile.pinyin}
                     </div>
@@ -519,9 +533,11 @@ export default function MahjongLearningApp() {
                     <div className="text-4xl font-bold mb-4 text-gray-800">
                       {currentQuestion.tile.nameCantonese}
                     </div>
-                    <div className="text-lg text-gray-600 mb-2">
-                      {currentQuestion.tile.nameEnglish}
-                    </div>
+                    {showEnglishNames && (
+                      <div className="text-lg text-gray-600 mb-2">
+                        {currentQuestion.tile.nameEnglish}
+                      </div>
+                    )}
                     <div className="text-sm text-gray-500">
                       {currentQuestion.tile.pinyin}
                     </div>
