@@ -170,12 +170,6 @@ export default function MahjongLearningApp() {
           </p>
         </div>
 
-        {/* Stats */}
-        <StatsCard progress={progress} studiedTiles={studiedTiles} />
-
-        {/* Accuracy Progress */}
-        <AccuracyProgress accuracy={accuracy} />
-
         {/* Sound Toggle */}
 
         {/* Mode Selection */}
@@ -250,6 +244,12 @@ export default function MahjongLearningApp() {
             )}
           </CardContent>
         </Card>
+
+        {/* Accuracy Progress */}
+        <AccuracyProgress accuracy={accuracy} />
+
+        {/* Stats */}
+        <StatsCard progress={progress} studiedTiles={studiedTiles} />
 
         {/* Reset Button */}
         <div className="text-center">
