@@ -116,6 +116,7 @@ const SettingsForm: React.FC<SettingsProps> = ({
         <div className="flex items-center justify-between">
           <span className="text-sm font-medium">Show English Names</span>
           <Switch
+            // disabled={hardMode}
             checked={showEnglishNames}
             onClick={() => setShowEnglishNames(!showEnglishNames)}
             className="ml-2"
@@ -127,7 +128,10 @@ const SettingsForm: React.FC<SettingsProps> = ({
           <span className="text-sm font-medium">Hard Mode</span>
           <Switch
             checked={hardMode}
-            onClick={() => setHardMode(!hardMode)}
+            onClick={() => {
+              setHardMode(!hardMode);
+              setShowEnglishNames(hardMode ? showEnglishNames : false);
+            }}
             className="ml-2"
           />
         </div>
