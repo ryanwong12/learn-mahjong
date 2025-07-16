@@ -55,9 +55,11 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               key={option.id}
               variant="outline"
               onClick={() => handleOptionSelect(option)}
-              className="h-20 text-4xl"
+              className="h-20 text-4xl flex items-center justify-center p-2"
             >
-              <TileDisplay tile={option} />
+              <div className="w-12 h-12 flex items-center justify-center">
+                <TileDisplay tile={option} />
+              </div>
             </Button>
           ))}
         </div>
