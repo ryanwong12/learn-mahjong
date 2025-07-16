@@ -1,7 +1,7 @@
 enum TileCategory {
   Character = "characters",
   Bamboo = "bamboo",
-  Dot = "dot",
+  Dot = "dots",
   Honour = "honour",
   Flowers = "flowers",
 }

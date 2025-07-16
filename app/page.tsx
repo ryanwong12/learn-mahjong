@@ -14,6 +14,7 @@ import Question from "@/types/Question";
 import UserProgress from "@/types/UserProgress";
 import AnswerInput from "@/components/mahjong/AnswerInput";
 import Result from "@/components/mahjong/Result";
+import TileDisplay from "@/components/mahjong/TileDisplay";
 
 export default function MahjongLearningApp() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -192,7 +193,7 @@ export default function MahjongLearningApp() {
                 currentMode === GameMode.Type ? (
                   <div className="mb-6">
                     <div className="text-8xl mb-4">
-                      {currentQuestion.tile.unicode}
+                      <TileDisplay tile={currentQuestion.tile} />
                     </div>
                     {showEnglishNames && (
                       <div className="text-lg text-gray-600 mb-2">

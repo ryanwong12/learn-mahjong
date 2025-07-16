@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import MahjongTile from "@/types/MahjongTile";
 import GameMode from "@/types/GameMode";
 import RomanAnswerInput from "./RomanAnswerInput";
+import TileDisplay from "./TileDisplay";
 
 type AnswerInputProps = {
   currentMode: GameMode;
@@ -56,7 +57,7 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               onClick={() => handleOptionSelect(option)}
               className="h-20 text-4xl"
             >
-              {option.unicode}
+              <TileDisplay tile={option} />
             </Button>
           ))}
         </div>
