@@ -111,11 +111,12 @@ const SettingsForm: React.FC<SettingsProps> = ({
   return (
     <form>
       {/* Add your form fields here */}
-      <div className="flex flex-col gap-6 mb-16 px-4">
+      <div className="flex flex-col gap-6 mb-16 px-4 text-xl">
         {/* Show English Names Toggle */}
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">Show English Names</span>
+          <span className="font-medium">Show English Names</span>
           <Switch
+            style={{ transform: "scale(1.3)" }}
             // disabled={hardMode}
             checked={showEnglishNames}
             onClick={() => setShowEnglishNames(!showEnglishNames)}
@@ -125,8 +126,9 @@ const SettingsForm: React.FC<SettingsProps> = ({
 
         {/* Hard Mode Toggle */}
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">Hard Mode</span>
+          <span className="font-medium">Hard Mode</span>
           <Switch
+            style={{ transform: "scale(1.3)" }}
             checked={hardMode}
             onClick={() => {
               setHardMode(!hardMode);
@@ -138,7 +140,7 @@ const SettingsForm: React.FC<SettingsProps> = ({
 
         {/* Reset Button */}
         <div className="flex items-center justify-between">
-          <span className="text-sm font-medium">Reset Progress</span>
+          <span className="font-medium">Reset Progress</span>
           <Button variant="outline" onClick={resetProgress} className="gap-2">
             <RotateCcw className="w-4 h-4" />
             Reset
