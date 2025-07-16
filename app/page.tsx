@@ -63,7 +63,7 @@ export default function MahjongLearningApp() {
             TileCategory.Character,
           ].includes(randomTile.category)
         ) {
-          // Number tile: pick same number from other categories, plus a random non-repeat tile
+          // Number tile: pick same number from other categories, plus a random tile from the same category
           const otherCategories = [
             TileCategory.Bamboo,
             TileCategory.Dot,
@@ -81,7 +81,8 @@ export default function MahjongLearningApp() {
             ...sameNumberTiles.map((t) => t.id),
           ];
           const randomTileExtra = MahjongTiles.filter(
-            (t) => !excludeIds.includes(t.id)
+            (t) =>
+              !excludeIds.includes(t.id) && t.category === randomTile.category
           );
           const extra =
             randomTileExtra[Math.floor(Math.random() * randomTileExtra.length)];
