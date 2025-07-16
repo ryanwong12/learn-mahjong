@@ -15,6 +15,7 @@ import UserProgress from "@/types/UserProgress";
 import AnswerInput from "@/components/mahjong/AnswerInput";
 import Result from "@/components/mahjong/Result";
 import TileDisplay from "@/components/mahjong/TileDisplay";
+import TileCategory from "@/types/TileCategory";
 
 export default function MahjongLearningApp() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -32,6 +33,7 @@ export default function MahjongLearningApp() {
   );
   const [studiedTiles, setStudiedTiles] = useState<Set<string>>(new Set());
   const [showEnglishNames, setShowEnglishNames] = useState<boolean>(false);
+  const [hardMode, setHardMode] = useState<boolean>(false);
 
   // Generate a new question
   const generateQuestion = () => {
@@ -40,7 +42,72 @@ export default function MahjongLearningApp() {
 
     let question: Question;
 
-    if (currentMode === GameMode.SelectPinyin) {
+    if (currentMode === GameMode.SelectPinyin && hardMode) {
+      // Show tile, user selects Pinyin
+      const randomNumber = Math.random();
+      // 50% chance to show tile, 50% chance to show Pinyin
+      let incorrectOptions: MahjongTile[] = [];
+      if (randomNumber < 0.5) {
+        // all same category
+        incorrectOptions = MahjongTiles.filter(
+          (t) => t.id !== randomTile.id && t.category === randomTile.category
+        )
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 3);
+      } else {
+        // all different category
+        if (
+          [
+            TileCategory.Bamboo,
+            TileCategory.Dot,
+            TileCategory.Character,
+          ].includes(randomTile.category)
+        ) {
+          // Number tile: pick same number from other categories, plus a random non-repeat tile
+          const otherCategories = [
+            TileCategory.Bamboo,
+            TileCategory.Dot,
+            TileCategory.Character,
+          ].filter((cat) => cat !== randomTile.category);
+          const sameNumberTiles = MahjongTiles.filter(
+            (t) =>
+              t.category !== randomTile.category &&
+              otherCategories.includes(t.category) &&
+              t.id[0] === randomTile.id[0] //id is like "1b", "2b", etc. so the first character is the number
+          );
+          // Pick a random tile that's not a repeat and not same category/number
+          const excludeIds = [
+            randomTile.id,
+            ...sameNumberTiles.map((t) => t.id),
+          ];
+          const randomTileExtra = MahjongTiles.filter(
+            (t) => !excludeIds.includes(t.id)
+          );
+          const extra =
+            randomTileExtra[Math.floor(Math.random() * randomTileExtra.length)];
+          incorrectOptions = [...sameNumberTiles, extra].slice(0, 3);
+        } else {
+          // Honour tile: pick 3 random honour tiles that are not the current one
+          incorrectOptions = MahjongTiles.filter(
+            (t) =>
+              t.category !== TileCategory.Bamboo &&
+              t.category !== TileCategory.Dot &&
+              t.category !== TileCategory.Character &&
+              t.id !== randomTile.id
+          )
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 3);
+        }
+      }
+
+      question = {
+        tile: randomTile,
+        options: [randomTile, ...incorrectOptions].sort(
+          () => Math.random() - 0.5
+        ),
+        mode: GameMode.SelectPinyin,
+      };
+    } else if (currentMode === GameMode.SelectPinyin) {
       // Show tile, user selects Pinyin
       const incorrectOptions = MahjongTiles.filter(
         (t) => t.id !== randomTile.id
@@ -54,6 +121,21 @@ export default function MahjongLearningApp() {
           () => Math.random() - 0.5
         ),
         mode: GameMode.SelectPinyin,
+      };
+    } else if (currentMode === GameMode.SelectTile && hardMode) {
+      // Show Pinyin, user selects correct tile
+      const incorrectOptions = MahjongTiles.filter(
+        (t) => t.id !== randomTile.id && t.category === randomTile.category
+      )
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+      question = {
+        tile: randomTile,
+        options: [randomTile, ...incorrectOptions].sort(
+          () => Math.random() - 0.5
+        ),
+        mode: GameMode.SelectTile,
       };
     } else if (currentMode === GameMode.SelectTile) {
       // Show Cantonese name, user selects correct tile
@@ -214,9 +296,11 @@ export default function MahjongLearningApp() {
                         {currentQuestion.tile.nameEnglish}
                       </div>
                     )}
-                    <div className="text-sm text-gray-500">
-                      {currentQuestion.tile.nameCantonese}
-                    </div>
+                    {!hardMode && (
+                      <div className="text-sm text-gray-500">
+                        {currentQuestion.tile.nameCantonese}
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -251,22 +335,35 @@ export default function MahjongLearningApp() {
         {/* Stats */}
         <StatsCard progress={progress} studiedTiles={studiedTiles} />
 
-        {/* Reset Button */}
-        <div className="text-center">
-          <Button variant="outline" onClick={resetProgress} className="gap-2">
-            <RotateCcw className="w-4 h-4" />
-            Reset Progress
-          </Button>
-        </div>
+        {/* Settings */}
+        <div className="flex justify-between items-center mb-6">
+          {/* Show English Names Toggle */}
+          <div className="text-center mt-4">
+            <span className="text-sm font-medium">Show English Names</span>
+            <Switch
+              checked={showEnglishNames}
+              onClick={() => setShowEnglishNames(!showEnglishNames)}
+              className="ml-2"
+            />
+          </div>
 
-        {/* Show English Names Toggle */}
-        <div className="text-center mt-4">
-          <span className="text-sm font-medium">Show English Names</span>
-          <Switch
-            checked={showEnglishNames}
-            onClick={() => setShowEnglishNames(!showEnglishNames)}
-            className="ml-2"
-          />
+          {/* Hard Mode Toggle */}
+          <div className="text-center mt-4">
+            <span className="text-sm font-medium">Hard Mode</span>
+            <Switch
+              checked={hardMode}
+              onClick={() => setHardMode(!hardMode)}
+              className="ml-2"
+            />
+          </div>
+
+          {/* Reset Button */}
+          <div className="text-center">
+            <Button variant="outline" onClick={resetProgress} className="gap-2">
+              <RotateCcw className="w-4 h-4" />
+              Reset Progress
+            </Button>
+          </div>
         </div>
       </div>
     </div>

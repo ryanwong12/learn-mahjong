@@ -8,7 +8,7 @@ interface AccuracyProgressProps {
 const AccuracyProgress = ({ accuracy }: AccuracyProgressProps) => {
   return (
     <Card className="mb-6">
-      <CardContent className="p-4">
+      <CardContent className="px-4">
         <div className="flex justify-between items-center mb-2">
           <span className="text-sm font-medium">Accuracy</span>
           <span className="text-sm font-medium">{accuracy.toFixed(1)}%</span>
