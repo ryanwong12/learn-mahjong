@@ -1,9 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { RotateCcw } from "lucide-react";
 import StatsCard from "@/components/mahjong/StatsCard";
 import AccuracyProgress from "@/components/mahjong/AccuracyProgress";
 import ModeSelect from "@/components/mahjong/ModeSelect";
@@ -16,6 +13,7 @@ import AnswerInput from "@/components/mahjong/AnswerInput";
 import Result from "@/components/mahjong/Result";
 import TileDisplay from "@/components/mahjong/TileDisplay";
 import TileCategory from "@/types/TileCategory";
+import SettingsMenu from "@/components/mahjong/SettingsMenu";
 
 export default function MahjongLearningApp() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -260,14 +258,29 @@ export default function MahjongLearningApp() {
 
         {/* Question Card */}
         <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="text-center">
-              {currentMode === GameMode.SelectPinyin
-                ? "What is this tile called?"
-                : currentMode === GameMode.SelectTile
-                ? "Select the correct tile:"
-                : "Type the Cantonese name:"}
-            </CardTitle>
+          <CardHeader className="flex items-center justify-between">
+            {/* Settings on the left */}
+            <div className="">
+              <SettingsMenu
+                showEnglishNames={showEnglishNames}
+                setShowEnglishNames={setShowEnglishNames}
+                hardMode={hardMode}
+                setHardMode={setHardMode}
+                resetProgress={resetProgress}
+              />
+            </div>
+            {/* Title centered */}
+            <div className="flex-1 flex justify-center items-center">
+              <CardTitle className="text-center">
+                {currentMode === GameMode.SelectPinyin
+                  ? "What is this tile called?"
+                  : currentMode === GameMode.SelectTile
+                  ? "Select the correct tile:"
+                  : "Type the Cantonese name:"}
+              </CardTitle>
+            </div>
+            {/* Empty spacer */}
+            <div className="w-9"></div>
           </CardHeader>
           <CardContent>
             {currentQuestion && (
@@ -333,37 +346,20 @@ export default function MahjongLearningApp() {
         {/* Accuracy Progress */}
         <AccuracyProgress accuracy={accuracy} />
 
-        {/* Stats */}
-        <StatsCard progress={progress} studiedTiles={studiedTiles} />
-
-        {/* Settings */}
-        <div className="flex justify-between items-center mb-6">
-          {/* Show English Names Toggle */}
-          <div className="text-center mt-4">
-            <span className="text-sm font-medium">Show English Names</span>
-            <Switch
-              checked={showEnglishNames}
-              onClick={() => setShowEnglishNames(!showEnglishNames)}
-              className="ml-2"
-            />
+        {/* Stats (Dropdown on mobile) */}
+        <div className="mb-4">
+          <div className="block md:hidden">
+            <details>
+              <summary className="cursor-pointer font-semibold text-gray-700">
+                Show Stats
+              </summary>
+              <div className="mt-2">
+                <StatsCard progress={progress} studiedTiles={studiedTiles} />
+              </div>
+            </details>
           </div>
-
-          {/* Hard Mode Toggle */}
-          <div className="text-center mt-4">
-            <span className="text-sm font-medium">Hard Mode</span>
-            <Switch
-              checked={hardMode}
-              onClick={() => setHardMode(!hardMode)}
-              className="ml-2"
-            />
-          </div>
-
-          {/* Reset Button */}
-          <div className="text-center">
-            <Button variant="outline" onClick={resetProgress} className="gap-2">
-              <RotateCcw className="w-4 h-4" />
-              Reset Progress
-            </Button>
+          <div className="hidden md:block">
+            <StatsCard progress={progress} studiedTiles={studiedTiles} />
           </div>
         </div>
       </div>
