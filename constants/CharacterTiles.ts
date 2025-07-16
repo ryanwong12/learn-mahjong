@@ -7,7 +7,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "一萬",
     nameEnglish: "1 Character",
     category: TileCategory.Character,
-    unicode: "🀇",
+    unicode: "🀇\uFE0F",
     pinyin: "yat1 maan6",
   },
   {
@@ -15,7 +15,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "二萬",
     nameEnglish: "2 Characters",
     category: TileCategory.Character,
-    unicode: "🀈",
+    unicode: "🀈\uFE0F",
     pinyin: "yi6 maan6",
   },
   {
@@ -23,7 +23,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "三萬",
     nameEnglish: "3 Characters",
     category: TileCategory.Character,
-    unicode: "🀉",
+    unicode: "🀉\uFE0F",
     pinyin: "saam1 maan6",
   },
   {
@@ -31,7 +31,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "四萬",
     nameEnglish: "4 Characters",
     category: TileCategory.Character,
-    unicode: "🀊",
+    unicode: "🀊\uFE0F",
     pinyin: "sei3 maan6",
   },
   {
@@ -39,7 +39,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "五萬",
     nameEnglish: "5 Characters",
     category: TileCategory.Character,
-    unicode: "🀋",
+    unicode: "🀋\uFE0F",
     pinyin: "ng5 maan6",
   },
   {
@@ -47,7 +47,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "六萬",
     nameEnglish: "6 Characters",
     category: TileCategory.Character,
-    unicode: "🀌",
+    unicode: "🀌\uFE0F",
     pinyin: "luk6 maan6",
   },
   {
@@ -55,7 +55,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "七萬",
     nameEnglish: "7 Characters",
     category: TileCategory.Character,
-    unicode: "🀍",
+    unicode: "🀍\uFE0F",
     pinyin: "cat1 maan6",
   },
   {
@@ -63,7 +63,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "八萬",
     nameEnglish: "8 Characters",
     category: TileCategory.Character,
-    unicode: "🀎",
+    unicode: "🀎\uFE0F",
     pinyin: "baat3 maan6",
   },
   {
@@ -71,7 +71,7 @@ const CharacterTiles: MahjongTile[] = [
     nameCantonese: "九萬",
     nameEnglish: "9 Characters",
     category: TileCategory.Character,
-    unicode: "🀏",
+    unicode: "🀏\uFE0F",
     pinyin: "gau2 maan6",
   },
 ];

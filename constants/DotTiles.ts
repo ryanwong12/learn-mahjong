@@ -7,7 +7,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "一筒",
     nameEnglish: "1 Dot",
     category: TileCategory.Dot,
-    unicode: "🀙",
+    unicode: "🀙\uFE0F",
     pinyin: "yat1 tung2",
   },
   {
@@ -15,7 +15,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "二筒",
     nameEnglish: "2 Dots",
     category: TileCategory.Dot,
-    unicode: "🀚",
+    unicode: "🀚\uFE0F",
     pinyin: "yi6 tung2",
   },
   {
@@ -23,7 +23,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "三筒",
     nameEnglish: "3 Dots",
     category: TileCategory.Dot,
-    unicode: "🀛",
+    unicode: "🀛\uFE0F",
     pinyin: "saam1 tung2",
   },
   {
@@ -31,7 +31,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "四筒",
     nameEnglish: "4 Dots",
     category: TileCategory.Dot,
-    unicode: "🀜",
+    unicode: "🀜\uFE0F",
     pinyin: "sei3 tung2",
   },
   {
@@ -39,7 +39,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "五筒",
     nameEnglish: "5 Dots",
     category: TileCategory.Dot,
-    unicode: "🀝",
+    unicode: "🀝\uFE0F",
     pinyin: "ng5 tung2",
   },
   {
@@ -47,7 +47,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "六筒",
     nameEnglish: "6 Dots",
     category: TileCategory.Dot,
-    unicode: "🀞",
+    unicode: "🀞\uFE0F",
     pinyin: "luk6 tung2",
   },
   {
@@ -55,7 +55,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "七筒",
     nameEnglish: "7 Dots",
     category: TileCategory.Dot,
-    unicode: "🀟",
+    unicode: "🀟\uFE0F",
     pinyin: "cat1 tung2",
   },
   {
@@ -63,7 +63,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "八筒",
     nameEnglish: "8 Dots",
     category: TileCategory.Dot,
-    unicode: "🀠",
+    unicode: "🀠\uFE0F",
     pinyin: "baat3 tung2",
   },
   {
@@ -71,7 +71,7 @@ const DotTiles: MahjongTile[] = [
     nameCantonese: "九筒",
     nameEnglish: "9 Dots",
     category: TileCategory.Dot,
-    unicode: "🀡",
+    unicode: "🀡\uFE0F",
     pinyin: "gau2 tung2",
   },
 ];

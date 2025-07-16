@@ -7,7 +7,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "東",
     nameEnglish: "East Wind",
     category: TileCategory.Honour,
-    unicode: "🀀",
+    unicode: "🀀\uFE0F",
     pinyin: "dung1",
   },
   {
@@ -15,7 +15,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "南",
     nameEnglish: "South Wind",
     category: TileCategory.Honour,
-    unicode: "🀁",
+    unicode: "🀁\uFE0F",
     pinyin: "naam4",
   },
   {
@@ -23,7 +23,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "西",
     nameEnglish: "West Wind",
     category: TileCategory.Honour,
-    unicode: "🀂",
+    unicode: "🀂\uFE0F",
     pinyin: "sai1",
   },
   {
@@ -31,7 +31,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "北",
     nameEnglish: "North Wind",
     category: TileCategory.Honour,
-    unicode: "🀃",
+    unicode: "🀃\uFE0F",
     pinyin: "bak1",
   },
   {
@@ -39,7 +39,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "中",
     nameEnglish: "Red Dragon",
     category: TileCategory.Honour,
-    unicode: "🀄",
+    unicode: "🀄\uFE0F",
     pinyin: "zung1",
   },
   {
@@ -47,7 +47,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "發",
     nameEnglish: "Green Dragon",
     category: TileCategory.Honour,
-    unicode: "🀅",
+    unicode: "🀅\uFE0F",
     pinyin: "faat3",
   },
   {
@@ -55,7 +55,7 @@ const HonourTiles: MahjongTile[] = [
     nameCantonese: "白",
     nameEnglish: "White Dragon",
     category: TileCategory.Honour,
-    unicode: "🀆",
+    unicode: "🀆\uFE0F",
     pinyin: "baak6",
   },
 ];
