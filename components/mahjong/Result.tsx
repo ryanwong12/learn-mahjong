@@ -1,13 +1,21 @@
 import Question from "@/types/Question";
 import { Button } from "../ui/button";
+import GameMode from "@/types/GameMode";
+import TileDisplay from "./TileDisplay";
 
 type ResultProps = {
+  gamemode: GameMode;
   isCorrect: boolean;
   currentQuestion: Question;
   nextQuestion: () => void;
 };
 
-const Result = ({ isCorrect, currentQuestion, nextQuestion }: ResultProps) => (
+const Result = ({
+  gamemode,
+  isCorrect,
+  currentQuestion,
+  nextQuestion,
+}: ResultProps) => (
   <div className="space-y-4">
     <div
       className={`text-2xl font-bold ${
@@ -21,7 +29,18 @@ const Result = ({ isCorrect, currentQuestion, nextQuestion }: ResultProps) => (
         {currentQuestion.tile.nameCantonese}
       </div>
       <div className="text-gray-600">{currentQuestion.tile.nameEnglish}</div>
-      <div className="text-sm text-gray-500">{currentQuestion.tile.pinyin}</div>
+      {gamemode === GameMode.SelectPinyin ? (
+        <div className="text-sm text-gray-500">
+          {currentQuestion.tile.pinyin}
+        </div>
+      ) : (
+        <div>
+          <TileDisplay
+            tile={currentQuestion.tile}
+            // className="w-24 h-24 mx-auto"
+          />
+        </div>
+      )}
     </div>
     <Button onClick={nextQuestion} className="w-full">
       Next Question

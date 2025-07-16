@@ -333,6 +333,7 @@ export default function MahjongLearningApp() {
                 {/* Result */}
                 {showResult && (
                   <Result
+                    gamemode={currentMode}
                     isCorrect={isCorrect}
                     currentQuestion={currentQuestion}
                     nextQuestion={nextQuestion}
