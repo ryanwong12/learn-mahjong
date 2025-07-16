@@ -57,7 +57,7 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               onClick={() => handleOptionSelect(option)}
               className="h-20 text-4xl flex items-center justify-center p-2"
             >
-              <div className="w-12 h-12 flex items-center justify-center">
+              <div className="w-12 justify-center">
                 <TileDisplay tile={option} />
               </div>
             </Button>
