@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Ryan Wong" }],
   creator: "Ryan Wong",
   openGraph: {
-    title: "麻雀學習 - Mahjong Learning",
+    title: "Learn Mahjong - 麻雀學習",
     description: "Learn Mahjong tiles in Cantonese",
     type: "website",
     locale: "en_US",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "麻雀學習 - Mahjong Learning",
+    title: "Learn Mahjong - 麻雀學習",
     description: "Learn Mahjong tiles in Cantonese",
   },
   viewport: "width=device-width, initial-scale=1",
