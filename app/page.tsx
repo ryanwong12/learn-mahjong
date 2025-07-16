@@ -297,11 +297,11 @@ export default function MahjongLearningApp() {
                         {currentQuestion.tile.nameEnglish}
                       </div>
                     )}
-                    {!hardMode && (
+                    {/* {!hardMode && (
                       <div className="text-sm text-gray-500">
                         {currentQuestion.tile.nameCantonese}
                       </div>
-                    )}
+                    )} */}
                   </div>
                 )}
 
