@@ -30,7 +30,10 @@ export const playClickSound = () => {
  */
 export const playWebAudioClickSound = () => {
   // Create a simple click sound using Web Audio API
-  const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+  const audioContext = new (
+    window.AudioContext ||
+    (window as Window & { webkitAudioContext?: typeof AudioContext; }).webkitAudioContext!
+  )();
 
   // Create oscillator for a brief tone
   const oscillator = audioContext.createOscillator();
