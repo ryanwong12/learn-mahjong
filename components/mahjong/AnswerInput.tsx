@@ -4,6 +4,7 @@ import MahjongTile from "@/types/MahjongTile";
 import GameMode from "@/types/GameMode";
 import RomanAnswerInput from "./RomanAnswerInput";
 import TileDisplay from "./TileDisplay";
+import { playClickSound, playSoundSafely } from "@/lib/sounds";
 
 type AnswerInputProps = {
   currentMode: GameMode;
@@ -30,7 +31,10 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
             <Button
               key={option.id}
               variant="outline"
-              onClick={() => handleOptionSelect(option)}
+              onClick={() => {
+                playSoundSafely(playClickSound);
+                handleOptionSelect(option);
+              }}
               className="h-20 text-2xl flex flex-col items-center justify-center"
             >
               {option.pinyin}
@@ -54,7 +58,10 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
             <Button
               key={option.id}
               variant="outline"
-              onClick={() => handleOptionSelect(option)}
+              onClick={() => {
+                playSoundSafely(playClickSound);
+                handleOptionSelect(option);
+              }}
               className="h-20 text-4xl flex items-center justify-center p-2"
             >
               <div className="w-12 justify-center">
