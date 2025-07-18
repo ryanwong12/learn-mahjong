@@ -1,4 +1,5 @@
 import { Button } from "../ui/button";
+import { playClickSound, playSoundSafely } from "@/lib/sounds";
 
 type RomanAnswerInputProps = {
   userAnswer: string;
@@ -21,7 +22,10 @@ const RomanAnswerInput = ({
       className="w-full p-3 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
     <Button
-      onClick={handleTextSubmit}
+      onClick={() => {
+        playSoundSafely(playClickSound);
+        handleTextSubmit();
+      }}
       className="w-full"
       disabled={!userAnswer.trim()}
     >
