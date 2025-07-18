@@ -6,11 +6,9 @@ const TileDisplay = ({ tile }: { tile: MahjongTile }) => (
     {/* Try Unicode first */}
     {/* <span className="unicode-tile">{tile.unicode}</span> */}
     {/* SVG fallback */}
-    <Image
+    <img
       src={`/tiles/svg/${tile.category}/${tile.id}.svg`}
       alt={tile.nameEnglish}
-      width={100}
-      height={100}
     />
   </div>
 );
