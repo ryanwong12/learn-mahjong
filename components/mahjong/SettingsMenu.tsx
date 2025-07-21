@@ -25,6 +25,8 @@ import { RotateCcw, Settings2Icon } from "lucide-react";
 type SettingsProps = {
   showEnglishNames: boolean;
   setShowEnglishNames: (value: boolean) => void;
+  showChineseNames: boolean;
+  setShowChineseNames: (value: boolean) => void;
   hardMode: boolean;
   setHardMode: (value: boolean) => void;
   resetProgress: () => void;
@@ -33,6 +35,8 @@ type SettingsProps = {
 const SettingsMenu = ({
   showEnglishNames,
   setShowEnglishNames,
+  showChineseNames,
+  setShowChineseNames = () => {},
   hardMode,
   setHardMode,
   resetProgress,
@@ -59,6 +63,8 @@ const SettingsMenu = ({
           <SettingsForm
             showEnglishNames={showEnglishNames}
             setShowEnglishNames={setShowEnglishNames}
+            showChineseNames={showChineseNames}
+            setShowChineseNames={setShowChineseNames}
             hardMode={hardMode}
             setHardMode={setHardMode}
             resetProgress={resetProgress}
@@ -85,6 +91,8 @@ const SettingsMenu = ({
         <SettingsForm
           showEnglishNames={showEnglishNames}
           setShowEnglishNames={setShowEnglishNames}
+          showChineseNames={showChineseNames}
+          setShowChineseNames={setShowChineseNames}
           hardMode={hardMode}
           setHardMode={setHardMode}
           resetProgress={resetProgress}
@@ -104,6 +112,8 @@ export default SettingsMenu;
 const SettingsForm: React.FC<SettingsProps> = ({
   showEnglishNames,
   setShowEnglishNames,
+  showChineseNames,
+  setShowChineseNames,
   hardMode,
   setHardMode,
   resetProgress,
@@ -120,6 +130,18 @@ const SettingsForm: React.FC<SettingsProps> = ({
             // disabled={hardMode}
             checked={showEnglishNames}
             onClick={() => setShowEnglishNames(!showEnglishNames)}
+            className="ml-2"
+          />
+        </div>
+
+        {/* Show Chinese Names Toggle */}
+        <div className="flex items-center justify-between">
+          <span className="font-medium">Show Chinese Names</span>
+          <Switch
+            style={{ transform: "scale(1.3)" }}
+            // disabled={hardMode}
+            checked={showChineseNames}
+            onClick={() => setShowChineseNames(!showChineseNames)}
             className="ml-2"
           />
         </div>

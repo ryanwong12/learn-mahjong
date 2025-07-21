@@ -13,6 +13,7 @@ type AnswerInputProps = {
   setUserAnswer: (value: string) => void;
   handleRomanTextSubmit: () => void;
   handleOptionSelect: (selectedTile: MahjongTile) => void;
+  showChineseNames: boolean;
 };
 
 const AnswerInput: React.FC<AnswerInputProps> = ({
@@ -22,6 +23,7 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
   setUserAnswer,
   handleRomanTextSubmit,
   handleOptionSelect,
+  showChineseNames,
 }) => {
   switch (currentMode) {
     case GameMode.SelectPinyin:
@@ -38,6 +40,11 @@ const AnswerInput: React.FC<AnswerInputProps> = ({
               className="h-20 text-2xl flex flex-col items-center justify-center"
             >
               {option.pinyin}
+              {showChineseNames && (
+                <span className="text-sm text-gray-500">
+                  {option.nameCantonese}
+                </span>
+              )}
             </Button>
           ))}
         </div>

@@ -33,6 +33,7 @@ export default function MahjongLearningApp() {
   const [studiedTiles, setStudiedTiles] = useState<Set<string>>(new Set());
   const [showEnglishNames, setShowEnglishNames] = useState<boolean>(false);
   const [hardMode, setHardMode] = useState<boolean>(false);
+  const [showChineseNames, setShowChineseNames] = useState<boolean>(false);
 
   // Generate a new question
   const generateQuestion = () => {
@@ -257,6 +258,8 @@ export default function MahjongLearningApp() {
           <SettingsMenu
             showEnglishNames={showEnglishNames}
             setShowEnglishNames={setShowEnglishNames}
+            showChineseNames={showChineseNames}
+            setShowChineseNames={setShowChineseNames}
             hardMode={hardMode}
             setHardMode={setHardMode}
             resetProgress={resetProgress}
@@ -314,6 +317,11 @@ export default function MahjongLearningApp() {
                     <div className="text-4xl font-bold mb-4 text-gray-800">
                       {currentQuestion.tile.pinyin}
                     </div>
+                    {showChineseNames && (
+                      <div className="text-lg text-gray-600 mb-2">
+                        {currentQuestion.tile.nameCantonese}
+                      </div>
+                    )}
                     {showEnglishNames && (
                       <div className="text-lg text-gray-600 mb-2">
                         {currentQuestion.tile.nameEnglish}
@@ -336,6 +344,7 @@ export default function MahjongLearningApp() {
                     setUserAnswer={setUserAnswer}
                     handleRomanTextSubmit={handleRomanTextSubmit}
                     handleOptionSelect={handleOptionSelect}
+                    showChineseNames={showChineseNames}
                   />
                 )}
 
