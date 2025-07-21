@@ -48,6 +48,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preload critical audio asset - guaranteed to be needed */}
+        <link rel="preload" href="/sounds/tile_sound.mp3" as="audio" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

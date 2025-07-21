@@ -14,6 +14,7 @@ import Result from "@/components/mahjong/Result";
 import TileDisplay from "@/components/mahjong/TileDisplay";
 import TileCategory from "@/types/TileCategory";
 import SettingsMenu from "@/components/mahjong/SettingsMenu";
+import { preloadAssets } from "@/lib/preloader";
 
 export default function MahjongLearningApp() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
@@ -234,6 +235,14 @@ export default function MahjongLearningApp() {
   useEffect(() => {
     generateQuestion();
   }, [currentMode]);
+
+  // Start preloading assets after component mounts
+  useEffect(() => {
+    // Preload assets in the background
+    preloadAssets().catch((error) => {
+      console.warn("Asset preloading failed:", error);
+    });
+  }, []);
 
   const accuracy =
     progress.totalAnswered > 0
