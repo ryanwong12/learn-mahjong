@@ -244,11 +244,23 @@ export default function MahjongLearningApp() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">🀄 麻雀學習</h1>
-          <p className="text-lg text-gray-600">
-            Learn Mahjong Tiles in Cantonese
-          </p>
+        <div className="flex items-center justify-between">
+          <SettingsMenu
+            showEnglishNames={showEnglishNames}
+            setShowEnglishNames={setShowEnglishNames}
+            hardMode={hardMode}
+            setHardMode={setHardMode}
+            resetProgress={resetProgress}
+          />
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+              🀄 麻雀學習
+            </h1>
+            <p className="text-lg text-gray-600">
+              Learn Mahjong Tiles in Cantonese
+            </p>
+          </div>
+          <div className="w-9"></div>
         </div>
 
         {/* Sound Toggle */}
@@ -260,16 +272,6 @@ export default function MahjongLearningApp() {
         <Card className="mb-6">
           <CardHeader className="flex items-center justify-between">
             {/* Settings on the left */}
-            <div className="">
-              <SettingsMenu
-                showEnglishNames={showEnglishNames}
-                setShowEnglishNames={setShowEnglishNames}
-                hardMode={hardMode}
-                setHardMode={setHardMode}
-                resetProgress={resetProgress}
-              />
-            </div>
-            {/* Title centered */}
             <div className="flex-1 flex justify-center items-center">
               <CardTitle className="text-center">
                 {currentMode === GameMode.SelectPinyin
@@ -279,8 +281,6 @@ export default function MahjongLearningApp() {
                   : "Type the Cantonese name:"}
               </CardTitle>
             </div>
-            {/* Empty spacer */}
-            <div className="w-9"></div>
           </CardHeader>
           <CardContent>
             {currentQuestion && (
