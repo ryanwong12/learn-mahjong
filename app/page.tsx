@@ -254,7 +254,7 @@ export default function MahjongLearningApp() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-8">
           <SettingsMenu
             showEnglishNames={showEnglishNames}
             setShowEnglishNames={setShowEnglishNames}
@@ -264,15 +264,18 @@ export default function MahjongLearningApp() {
             setHardMode={setHardMode}
             resetProgress={resetProgress}
           />
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
-              🀄 麻雀學習
+          <div className="text-center flex-1 mx-4">
+            <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-1 md:mb-2">
+              <span className="md:hidden">🀄 🐣🤲</span>
+              <span className="hidden md:inline">🀄 麻雀學習</span>
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-sm md:text-lg text-gray-600 hidden md:block">
               Learn Mahjong Tiles in Cantonese
             </p>
           </div>
-          <div className="w-9"></div>
+          <button className="p-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors">
+            <div className="w-6 h-6 bg-gray-400 rounded-full"></div>
+          </button>
         </div>
 
         {/* Sound Toggle */}
